@@ -14,7 +14,7 @@ const FORBIDDEN_FENCE = [
   "control-ui",
   "control-cli",
   "git show origin/main:",
-  "grok-4.6-fast-xhigh",
+  "grok-4.7-fast-xhigh",
   "~/.claude",
   "../references/",
   "/tmp",
@@ -344,7 +344,7 @@ describe("check-plan", () => {
       replaceOnce(
         skeleton,
         CONTRACT.laneSentence,
-        "Ten lanes on `grok-4.6-fast-xhigh` at the PR head",
+        "Ten lanes on `grok-4.7-fast-xhigh` at the PR head",
       ),
       `Verify, live lacks "${CONTRACT.laneSentence}"`,
     ],

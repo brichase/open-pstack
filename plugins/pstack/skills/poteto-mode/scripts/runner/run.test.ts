@@ -72,7 +72,7 @@ if (name === "grok" && args[0] === "models") {
   const transientMarker = process.env.FAKE_GROK_TRANSIENT_UNAUTH_PATH;
   if (transientMarker && !existsSync(transientMarker)) {
     writeFileSync(transientMarker, String(process.pid));
-    console.log("Available models:\\n  * grok-4.6 (default)");
+    console.log("Available models:\\n  * grok-4.7 (default)");
     console.error("You are not authenticated.");
     process.exit(0);
   }
@@ -84,7 +84,7 @@ if (name === "grok" && args[0] === "models") {
     console.error("Not logged in. Run grok auth login.");
     process.exit(1);
   }
-  console.log("You are logged in with grok.com.\\nAvailable models:\\n  * grok-4.6 (default)");
+  console.log("You are logged in with grok.com.\\nAvailable models:\\n  * grok-4.7 (default)");
   process.exit(0);
 }
 const modelIndex = args.findIndex((value) => value === "--model");
@@ -142,7 +142,7 @@ function options(provider: Provider, suffix: string = provider): RunnerOptions {
       ? "fable"
       : provider === "codex"
         ? "gpt-6-astra"
-        : "grok-4.6";
+        : "grok-4.7";
   return {
     parent,
     provider,
