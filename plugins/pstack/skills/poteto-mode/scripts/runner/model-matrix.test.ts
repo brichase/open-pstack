@@ -21,7 +21,7 @@ const MATRIX_HEADER = [
   "Claude-native agent stem",
 ] as const;
 
-const FAMILY_ORDER = ["fable", "sol", "grok", "opus"] as const;
+const FAMILY_ORDER = ["fable", "astra", "grok", "opus"] as const;
 const PROVIDERS = ["claude", "codex", "grok"] as const;
 const DESCRIPTOR_RE =
   /(claude|codex|grok):[a-z0-9.-]+@(low|medium|high|xhigh|max)/g;
@@ -217,7 +217,7 @@ describe("model matrix", () => {
       rows.map((row) => [row.family, row.defaultEffort])
     ).toEqual([
       ["fable", "max"],
-      ["sol", "max"],
+      ["astra", "max"],
       ["grok", "xhigh"],
       ["opus", "xhigh"],
     ]);

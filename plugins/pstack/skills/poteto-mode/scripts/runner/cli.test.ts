@@ -9,7 +9,7 @@ function argv(extra: readonly string[] = []): string[] {
     "--provider",
     "codex",
     "--model",
-    "gpt-5.6-sol",
+    "gpt-6-astra",
     "--effort",
     "max",
     "--mode",

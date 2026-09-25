@@ -6,7 +6,7 @@ function options(overrides: Partial<RunnerOptions> = {}): RunnerOptions {
   return {
     parent: "claude",
     provider: "codex",
-    model: "gpt-5.6-sol",
+    model: "gpt-6-astra",
     effort: "max",
     mode: "read-only",
     promptPath: "/tmp/prompt.md",
@@ -26,7 +26,7 @@ describe("invocationCommand", () => {
     expect(spec.args).toEqual([
       "exec",
       "--model",
-      "gpt-5.6-sol",
+      "gpt-6-astra",
       "--config",
       'model_reasoning_effort="max"',
       "--sandbox",
@@ -155,7 +155,7 @@ describe("invocationCommand", () => {
       },
       {
         provider: "codex" as const,
-        model: "gpt-5.6-sol",
+        model: "gpt-6-astra",
         flag: (effort: "low" | "medium" | "high") => [
           "--config",
           `model_reasoning_effort="${effort}"`,

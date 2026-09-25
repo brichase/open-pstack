@@ -43,7 +43,7 @@ One distinct effort per family is the current value. A family with no non-alias 
 
 ### 4. Collect one requested effort per family
 
-Ask exactly four effort questions, one each for Fable, Sol, Grok, and Opus. Name each model, its current or proposed value, and the Selectable efforts from its matrix row. Empty input keeps a current value or accepts the matrix proposal for an unassigned family. On a first run, state the four matrix defaults before asking. On a rerun, state the four parsed values without offering to reset customized role lanes.
+Ask exactly four effort questions, one each for Fable, Astra, Grok, and Opus. Name each model, its current or proposed value, and the Selectable efforts from its matrix row. Empty input keeps a current value or accepts the matrix proposal for an unassigned family. On a first run, state the four matrix defaults before asking. On a rerun, state the four parsed values without offering to reset customized role lanes.
 
 ### 5. Probe the four requested pairs
 
@@ -52,11 +52,11 @@ Probe only the four selected `provider:model@effort` pairs. Run one probe per fa
 | Family | Pair source | Claude parent route | Codex parent route | Availability proof |
 |---|---|---|---|---|
 | Fable | Fable matrix row + selected effort | native Agent `pstack-fable-<effort>` | Claude CLI | native one-turn probe or `claude auth status --json` plus one-turn probe |
-| Sol | Sol matrix row + selected effort | `codex exec` | native `spawn_agent` | `codex login status` plus one-turn probe or native one-turn probe |
+| Astra | Astra matrix row + selected effort | `codex exec` | native `spawn_agent` | `codex login status` plus one-turn probe or native one-turn probe |
 | Grok | Grok matrix row + selected effort | Grok CLI | Grok CLI | `grok models` must list the requested model; one-turn probe |
 | Opus | Opus matrix row + selected effort | native Agent `pstack-opus-<effort>` | Claude CLI | native one-turn probe or `claude auth status --json` plus one-turn probe |
 
-Use a tiny read-only probe that returns a unique marker. A login-status command alone proves credentials, not that the requested model and effort flags run. Record native and external results separately. Never call the external launcher for the parent's own provider. On a Claude parent, the Fable and Opus probes are one-turn runs of the mapped `pstack-<stem>-<effort>` agent. On a Codex parent, the Sol probe is native `spawn_agent` with the selected `reasoning_effort`. Every other pair uses the external runner with the selected effort flag.
+Use a tiny read-only probe that returns a unique marker. A login-status command alone proves credentials, not that the requested model and effort flags run. Record native and external results separately. Never call the external launcher for the parent's own provider. On a Claude parent, the Fable and Opus probes are one-turn runs of the mapped `pstack-<stem>-<effort>` agent. On a Codex parent, the Astra probe is native `spawn_agent` with the selected `reasoning_effort`. Every other pair uses the external runner with the selected effort flag.
 
 Receipts and native transcripts prove the requested effort and the route. They do not prove a provider's hidden applied reasoning depth. There is no implicit timeout, weaker-model fallback, same-provider external fallback, or second mutable configuration source.
 
@@ -71,7 +71,7 @@ After effort selection, ask whether to keep those role-to-family assignments or 
 
 Require the final role map to contain at least one descriptor from each matrix family. The sheet stores effort only in role descriptors, so an unassigned family's selection cannot persist without adding a second source of truth.
 
-Rewrite every matrix-family descriptor to `provider:model@<requested effort for that family>`. Leave `inherit-parent` and `auto` unchanged. An effort-only rerun cannot change a role's family. Changing Grok's effort updates every Grok occurrence and does not move a Sol role onto Grok. Refuse an unqualified slug, an unavailable route, a model other than the four matrix families, or a provider/model mismatch.
+Rewrite every matrix-family descriptor to `provider:model@<requested effort for that family>`. Leave `inherit-parent` and `auto` unchanged. An effort-only rerun cannot change a role's family. Changing Grok's effort updates every Grok occurrence and does not move an Astra role onto Grok. Refuse an unqualified slug, an unavailable route, a model other than the four matrix families, or a provider/model mismatch.
 
 ### 7. Confirm and commit
 
@@ -89,20 +89,20 @@ After the operator confirms, write the in-memory render from step 6. Never paste
 Provider-qualified per-role choices. Read the installed pstack provider-dispatch reference before dispatching a configured role. Every documented role remains present. `inherit-parent` and `auto` use the parent model natively and still count as one panel lane.
 
 feature, refactoring: grok:grok-4.6@xhigh
-bug-fix: codex:gpt-5.6-sol@max
-perf-issue: codex:gpt-5.6-sol@max
-hillclimb: codex:gpt-5.6-sol@max
+bug-fix: codex:gpt-6-astra@max
+perf-issue: codex:gpt-6-astra@max
+hillclimb: codex:gpt-6-astra@max
 judgment and prose: claude:fable@max
 hardest tasks: claude:fable@max
 how explorer: grok:grok-4.6@xhigh
 how explainer: claude:fable@max
 why investigators, synthesizer: inherit-parent
 reflect tooling, judgment, divergent, synthesizer: inherit-parent
-arena runners: claude:fable@max, codex:gpt-5.6-sol@max, grok:grok-4.6@xhigh, claude:opus@xhigh
-arena cross-judge pool: claude:fable@max, codex:gpt-5.6-sol@max, grok:grok-4.6@xhigh, claude:opus@xhigh
+arena runners: claude:fable@max, codex:gpt-6-astra@max, grok:grok-4.6@xhigh, claude:opus@xhigh
+arena cross-judge pool: claude:fable@max, codex:gpt-6-astra@max, grok:grok-4.6@xhigh, claude:opus@xhigh
 swarm workers: grok:grok-4.6@xhigh
-architect runners: claude:fable@max, codex:gpt-5.6-sol@max, grok:grok-4.6@xhigh, claude:opus@xhigh
-interrogate reviewers: claude:fable@max, codex:gpt-5.6-sol@max, grok:grok-4.6@xhigh, claude:opus@xhigh
+architect runners: claude:fable@max, codex:gpt-6-astra@max, grok:grok-4.6@xhigh, claude:opus@xhigh
+interrogate reviewers: claude:fable@max, codex:gpt-6-astra@max, grok:grok-4.6@xhigh, claude:opus@xhigh
 ```
 
 ### 8. Wire it in

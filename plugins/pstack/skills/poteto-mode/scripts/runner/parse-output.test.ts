@@ -43,8 +43,8 @@ describe("parseProviderOutput", () => {
           },
         }),
       ].join("\n"),
-      "model: gpt-5.6-sol\nreasoning effort: max\n",
-      "gpt-5.6-sol"
+      "model: gpt-6-astra\nreasoning effort: max\n",
+      "gpt-6-astra"
     );
     expect(parsed).toMatchObject({
       text: "CODEX_OK",
@@ -129,7 +129,7 @@ describe("parseProviderOutput", () => {
         "codex",
         JSON.stringify({ type: "turn.completed" }),
         "",
-        "gpt-5.6-sol"
+        "gpt-6-astra"
       )
     ).toThrow("final agent message");
   });

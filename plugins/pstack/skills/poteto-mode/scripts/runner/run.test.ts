@@ -141,7 +141,7 @@ function options(provider: Provider, suffix: string = provider): RunnerOptions {
     provider === "claude"
       ? "fable"
       : provider === "codex"
-        ? "gpt-5.6-sol"
+        ? "gpt-6-astra"
         : "grok-4.6";
   return {
     parent,
@@ -300,7 +300,7 @@ describe("runLane", () => {
     expect(result.exitCode).toBe(0);
     expect(receipt(input.receiptPath)).toMatchObject({
       status: "complete",
-      model: "gpt-5.6-sol",
+      model: "gpt-6-astra",
       reportedModel: null,
       modelVerified: false,
       modelEvidence: "pinned-argv",
@@ -315,7 +315,7 @@ describe("runLane", () => {
     expect(existsSync(input.outputPath)).toBe(false);
     expect(receipt(input.receiptPath)).toMatchObject({
       status: "unavailable-model",
-      model: "gpt-5.6-sol",
+      model: "gpt-6-astra",
       reportedModel: null,
       modelVerified: false,
       modelEvidence: null,
